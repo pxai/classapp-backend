@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const _ = require('lodash');
 
-const CourseSchema = new mongoose.Schema({
+const ItemSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -18,6 +18,6 @@ const CourseSchema = new mongoose.Schema({
 });
 
 
-const Course = mongoose.model('Course', CourseSchema);
+const Item = mongoose.model('Item', ItemSchema);
 
-module.exports = {Course};
+module.exports = {Item}
