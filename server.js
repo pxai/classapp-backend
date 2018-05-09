@@ -4,16 +4,15 @@ const bodyParser = require('body-parser')
 const {ObjectID} = require('mongodb');
 const PORT = process.env.PORT || 3000;
 
-
 const app = express();
 
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 }));
-//hbs.registerHelper('each');
 
+app.use(express.static(__dirname + '/public'));
 
-app.get('/', (req, res) => {
+app.get('/ok', (req, res) => {
     res.send({result : 'OK'});
 });
 

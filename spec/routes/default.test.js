@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 describe('Simple home requests', ()=> {
 
     it('should return home', (done) => {
-        request(app).get('/')
+        request(app).get('/ok')
             .expect(200)
             .expect((res) => {
                expect(res.body.result).to.equal('OK');
