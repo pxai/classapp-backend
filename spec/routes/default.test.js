@@ -25,7 +25,7 @@ describe('Simple home requests', ()=> {
     server.close(done)
   })
 
-    it('should return home', (done) => {
+    it('should return ok json', (done) => {
         request.get('/ok')
             .expect(200)
             .expect((res) => {
@@ -33,5 +33,15 @@ describe('Simple home requests', ()=> {
             })
             .end(done);
     });
+
+	it('should return home', (done) => {
+        request.get('/')
+            .expect(200)
+            .expect((res) => {
+               expect(res.text).contain('ClassApp')
+            })
+            .end(done);
+    });
+
 });
 

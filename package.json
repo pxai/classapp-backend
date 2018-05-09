@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "ClassApp\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[DBackend for ClassApp based on Node.js",
   "main": "app.js",
+  "engines" : { "node" : ">=8.4.0" } ,
   "scripts": {
     "start": "node server",
     "test": "export NODE_ENV=test || SET NODE_ENV=test && mocha spec/**/**/*.test.js --exit",
