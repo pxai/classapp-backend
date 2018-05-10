@@ -26,7 +26,7 @@ describe('API Course requests', ()=> {
   })
 
     it('should return courses json', (done) => {
-        request.get('/courses')
+        request.get('/course')
             .expect(200)
             .expect((res) => {
                expect(res.body).to.be.an('array');

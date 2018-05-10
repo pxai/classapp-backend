@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser')
 const {ObjectID} = require('mongodb');
 const PORT = process.env.PORT || 3000;
-
+const routes = require('./routes');
 const app = express();
 
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
@@ -12,13 +12,8 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 
 app.use(express.static(__dirname + '/public'));
 
-app.get('/ok', (req, res) => {
-    res.send({result : 'OK'});
-});
+routes(app);
 
-app.get('/courses', (req, res) => {
-    res.send([{name: 'Sample1', description: 'Sample1 Course'}, {name: 'Sample2', description: 'Sample2 Course'}]);
-});
 app.listen(PORT, () => {
     console.log(`This works in ${process.env.NODE_ENV} mode on ${PORT}`);
 });
