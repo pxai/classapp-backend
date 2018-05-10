@@ -16,6 +16,9 @@ app.get('/ok', (req, res) => {
     res.send({result : 'OK'});
 });
 
+app.get('/courses', (req, res) => {
+    res.send([{name: 'Sample1', description: 'Sample1 Course'}, {name: 'Sample2', description: 'Sample2 Course'}]);
+});
 app.listen(PORT, () => {
     console.log(`This works in ${process.env.NODE_ENV} mode on ${PORT}`);
 });
