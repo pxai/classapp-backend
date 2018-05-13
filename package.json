@@ -3,12 +3,17 @@
   "version": "1.0.0",
   "description": "ClassApp\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[DBackend for ClassApp based on Node.js",
   "main": "app.js",
-  "engines" : { "node" : ">=8.4.0" } ,
+  "engines": {
+    "node": ">=8.4.0"
+  },
   "scripts": {
     "start": "node server",
     "test": "export NODE_ENV=test || SET NODE_ENV=test && mocha spec/**/**/*.test.js --exit",
     "test-watch": "nodemon --exec \"npm test\"",
-    "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
+    "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
+ 	"client": "cd client && yarn start",
+    "server": "nodemon server.js",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
   "repository": {
     "type": "git",
@@ -38,6 +43,7 @@
   },
   "devDependencies": {
     "chai": "^4.1.2",
+    "concurrently": "^3.5.1",
     "coveralls": "^3.0.1",
     "mocha": "^5.1.1",
     "sinon": "^5.0.7",
