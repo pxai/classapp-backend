@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 const _ = require('lodash');
+mongoose.connect(process.env.MONGODB_URI);
 
 const CourseSchema = new mongoose.Schema({
   name: {
@@ -14,10 +15,14 @@ const CourseSchema = new mongoose.Schema({
     type: String,
     require: true,
     minlength: 6
-  }
+  },
+	createdAt: {
+		type: Date,
+		default: Date.now
+	}
 });
 
 
 const Course = mongoose.model('Course', CourseSchema);
 
-module.exports = {Course};
+module.exports = Course;

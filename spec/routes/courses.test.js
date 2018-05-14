@@ -4,10 +4,25 @@ const supertest = require('supertest');
 const {ObjectID} = require('mongodb');
 const app = require('../../server').app;
 const bodyParser = require('body-parser')
+const Course  = require('../../model/course');
+
+const courses = [
+	{name: 'Sample1', description: 'Sample1 Course'}, 
+	{name: 'Sample2', description: 'Sample2 Course'}
+];
 
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 }));
+
+beforeEach((done) => {
+	Course.remove({})
+        .then(() => {
+            return Course.insertMany(courses);
+        });
+
+	done();
+});
 
 
 describe('API Course requests', ()=> {
@@ -17,6 +32,7 @@ describe('API Course requests', ()=> {
   let server = null;
 
   before(function(done){
+
     server = app.listen(done);
     request = supertest.agent(server);
   })
