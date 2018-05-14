@@ -25,14 +25,22 @@ describe('API Course requests', ()=> {
     server.close(done)
   })
 
-    it('should return courses json', (done) => {
+  it('should return courses json', (done) => {
         request.get('/course')
             .expect(200)
             .expect((res) => {
                expect(res.body).to.be.an('array');
             })
             .end(done);
-    });
+  });
 
+	it('should return one course', (done) => {
+		request.get('/course/1')
+			.expect(200)
+			.expect((res) => {
+				expect(res.body).to.be.an('object');	
+			})
+				.end(done);
+	});
 });
 
