@@ -7,6 +7,9 @@ const course = (app) => {
 	app.get('/course/:id', (req, res) => {
     	res.send({name: 'Sample1', description: 'Sample1 Course'});
 	});
+	app.delete('/course/:id', (req, res) => {
+    	res.send({name: 'Sample1', description: 'Sample1 Course'});
+	});
 };
 
 module.exports = course;

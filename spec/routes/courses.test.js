@@ -58,5 +58,27 @@ describe('API Course requests', ()=> {
 			})
 				.end(done);
 	});
+
+	it('should delete one course', (done) => {
+		let deletedId = courses[0]._id;
+		request.delete(`/course/${courses[0]._id}`)
+          .expect(200)
+          .expect((res) => {
+            expect(res.body.course._id).toContain(courses[0]._id);
+            expect(res.body.course.name).toBe(courses[0].name);
+          })
+          .end((err, res) => {
+            if (err) {
+              return done(err);
+            }
+            Course.findOne({_id: deletedId}).then((course) => {
+              expect(course).toBe(null);
+              done();
+		 	}).catch((e) => done(e));
+          });
+	
+
+	});	
 });
+
 
